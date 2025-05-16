@@ -145,7 +145,7 @@
       overflow: hidden;
     `) : setTimeout(() => { Te() }, 0)
   } function Bh(s, e = {}) { const { speed: t = 150, target: i = null } = e, r = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<>?/[]{}"; document.querySelectorAll(s).forEach(n => { const o = i ? n.querySelector(i) : n; if (!o) return; const a = o.textContent; n.addEventListener("mouseenter", () => { let l = "", c = 0; const h = setInterval(() => { l = ""; for (let u = 0; u < a.length; u++)u < c ? l += a[u] : l += r.charAt(Math.floor(Math.random() * r.length)); o.textContent = l, c < a.length ? c++ : (clearInterval(h), o.textContent = a) }, t) }) }) } function Nh() { const s = document.querySelector(".home"), e = document.querySelector(".nav-wrapper"), t = document.querySelector(".header"); if (!s || !e || !t) return; const i = window.matchMedia("(max-width: 991px)"); function r(n) { n.matches ? s.parentElement !== e && e.insertBefore(s, e.firstChild) : s.parentElement !== t && t.insertBefore(s, e) } r(i), i.addEventListener("change", r) } document.addEventListener("DOMContentLoaded", () => { var l; Uh(), $h(), ln(), St(); const s = window.innerWidth < 992, e = document.querySelector(".viewport_right"), t = document.querySelector(".viewport_right-inner"), i = document.querySelector(".content-wrapper"), r = document.querySelector(".view-container"), n = document.querySelector(".game_inner"), o = document.querySelector("#game-view.is-visible"); if (s && e && !o && (e.style.height = "auto", e.style.minHeight = "auto", e.style.display = "block", e.style.overflow = "visible", t && (t.style.height = "auto", t.style.minHeight = "auto", t.style.display = "block", t.style.overflow = "visible"), i && (i.style.height = "auto", i.style.minHeight = "auto", i.style.display = "block", i.style.overflow = "visible"), r && (r.style.height = "auto", r.style.minHeight = "auto", r.style.display = "block", r.style.overflow = "visible"), n && (n.style.height = "auto", n.style.minHeight = "auto", n.style.display = "block", n.style.overflow = "visible")), ((l = document.querySelector('[data-barba="container"]')) == null ? void 0 : l.dataset.barbaNamespace) === "home") { const c = document.getElementById("game"), h = document.getElementById("manifesto"); c && h && (c.classList.add("is-active"), h.classList.remove("is-active")), Lr() } }), window.addEventListener("resize", () => {
-    var c; const s = (c = document.querySelector('[data-barba="container"]')) == null ? void 0 : c.dataset.barbaNamespace, e = window.innerWidth < 992, t = document.querySelector(".viewport_right"), i = document.querySelector(".viewport_right-inner"), r = document.querySelector(".content-wrapper"), n = document.querySelector(".view-container"), o = document.querySelector(".game_inner"), a = document.querySelector("#game-view.is-visible"), l = document.querySelector("#manifesto-view.is-visible"); St(), t && (s === "home" && (e ? t.style.removeProperty("width") : (t.style.width = window.innerWidth >= 1440 ? "60vw" : "70vw", a ? (t.style.cssText = `
+    var l; const s = (l = document.querySelector('[data-barba="container"]')) == null ? void 0 : l.dataset.barbaNamespace, e = window.innerWidth < 992, t = document.querySelector(".viewport_right"), i = document.querySelector(".viewport_right-inner"), r = document.querySelector(".content-wrapper"), n = document.querySelector(".view-container"), o = document.querySelector(".game_inner"), a = document.querySelector("#game-view.is-visible"); St(), t && (s === "home" ? e ? t.style.removeProperty("width") : (t.style.width = window.innerWidth >= 1440 ? "60vw" : "70vw", a ? (t.style.cssText = `
             width: ${window.innerWidth >= 1440 ? "60vw" : "70vw"};
             height: 100vh;
             min-height: 100vh;
@@ -176,6 +176,27 @@
               display: flex;
               position: relative;
               overflow: hidden;
-            `)) : l && (t.style.width = window.innerWidth >= 1440 ? "60vw" : "70vw", t.style.height = "", t.style.minHeight = "", t.style.display = "", t.style.overflow = "", i && (i.style = ""), r && (r.style = ""), n && (n.style = ""), o && (o.style = "")))), e && !a && (t.style.height = "auto", t.style.minHeight = "auto", t.style.display = "block", t.style.overflow = "visible", i && (i.style.height = "auto", i.style.minHeight = "auto", i.style.display = "block", i.style.overflow = "visible"), r && (r.style.height = "auto", r.style.minHeight = "auto", r.style.display = "block", r.style.overflow = "visible"), n && (n.style.height = "auto", n.style.minHeight = "auto", n.style.display = "block", n.style.overflow = "visible"), o && (o.style.height = "auto", o.style.minHeight = "auto", o.style.display = "block", o.style.overflow = "visible"))), typeof _t == "function" && _t()
+            `)) : (t.style.width = window.innerWidth >= 1440 ? "60vw" : "70vw", t.style.height = "", t.style.minHeight = "", t.style.display = "", t.style.overflow = "", i && (i.style = ""), r && (r.style = ""), n && (n.style = ""), o && (o.style = ""))) : e ? (t.style.cssText = `
+          height: auto;
+          min-height: auto;
+          display: block;
+          overflow: visible;
+          width: 100%;
+        `, i && (i.style.cssText = `
+            height: auto;
+            min-height: auto;
+            display: block;
+            overflow: visible;
+          `), r && (r.style.cssText = `
+            height: auto;
+            min-height: auto;
+            display: block;
+            overflow: visible;
+          `), n && (n.style.cssText = `
+            height: auto;
+            min-height: auto;
+            display: block;
+            overflow: visible;
+          `)) : (t.style = "", i && (i.style = ""), r && (r.style = ""), n && (n.style = ""), o && (o.style = ""))), typeof _t == "function" && _t()
   }); function St() { const s = window.innerWidth < 992, e = document.querySelector("#game-view.is-visible"), t = document.querySelector(".game-controls"), i = document.getElementById("restart"); if (!(!t || !i)) { if (!e) { t.style.display = "none", i.style.display = "none"; return } s ? (t.style.display = "flex", i.style.display = "none") : (t.style.display = "none", i.style.display = "flex") } } window.addEventListener("error", function (s) { if (s.message && s.message.includes("ControlLooksLikePasswordCredentialField")) return s.stopImmediatePropagation(), s.preventDefault(), !1 }); var xo = function () { throw new Error("ws does not work in the browser. Browser clients must use the native WebSocket object") }, Fh = Object.freeze(yi({ __proto__: null, [Symbol.toStringTag]: "Module", default: xo }, [xo]))
 });
