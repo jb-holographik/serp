@@ -746,7 +746,7 @@ export function updateGameControlsVisibility() {
 
   // Si on n'est pas en mode jeu, cacher les contrôles
   if (!isGameView) {
-    gameControls.style.display = 'none'
+    gameControls.style.visibility = 'hidden'
     restartBtn.style.display = 'none'
     return
   }
@@ -754,11 +754,11 @@ export function updateGameControlsVisibility() {
   // Si c'est le mode jeu
   if (isMobile) {
     // Sur mobile/tablette
-    gameControls.style.display = 'flex'
+    gameControls.style.visibility = 'visible'
     restartBtn.style.display = 'none'
   } else {
     // Sur desktop
-    gameControls.style.display = 'none'
+    gameControls.style.visibility = 'hidden'
     restartBtn.style.display = 'flex'
   }
 }
