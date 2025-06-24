@@ -4,13 +4,13 @@ import { CustomEase } from 'gsap/CustomEase'
 // import { initScanAnimation } from './animations/scan.js'
 import { startLoaderAnimation } from './components/loader.js'
 import { initGame } from './components/snake'
-// import {
-//   initializeTerminal,
-//   ensureTerminalChevrons,
-//   updateWelcomeText,
-//   initCommands,
-//   updateChevrons,
-// } from './components/terminal.js'
+import {
+  initializeTerminal,
+  ensureTerminalChevrons,
+  updateWelcomeText,
+  initCommands,
+  updateChevrons,
+} from './components/terminal.js'
 import { initializeBarba } from './config/barba.js'
 import { scrambleText } from './utils/text.js'
 
@@ -19,33 +19,33 @@ gsap.registerPlugin(CustomEase)
 CustomEase.create('serpeasing', 'M0,0 C0.37,0.01 0.01,0.99 1,1')
 
 // Afficher l'ASCII art dans la console
-// function displayAsciiArt() {
-//   // Utiliser une approche plus simple pour l'affichage unique
-//   // Vérifier si l'ASCII art a déjà été affiché
-//   if (window.asciiArtTimestamp) {
-//     // Ne pas afficher si moins de 100ms se sont écoulées depuis le dernier affichage
-//     // Cela évite les doubles affichages causés par des réinitialisations rapides ou Barba.js
-//     const now = Date.now()
-//     if (now - window.asciiArtTimestamp < 100) return
-//   }
+function displayAsciiArt() {
+  // Utiliser une approche plus simple pour l'affichage unique
+  // Vérifier si l'ASCII art a déjà été affiché
+  if (window.asciiArtTimestamp) {
+    // Ne pas afficher si moins de 100ms se sont écoulées depuis le dernier affichage
+    // Cela évite les doubles affichages causés par des réinitialisations rapides ou Barba.js
+    const now = Date.now()
+    if (now - window.asciiArtTimestamp < 100) return
+  }
 
-//   const asciiArt = `
-//   ██████╗███████╗██████╗ ██████╗ corp
-//  ██╔════╝██╔════╝██╔══██╗██╔══██╗
-//  ╚█████╗ █████╗  ██████╔╝██████╔╝
-//   ╚═══██╗██╔══╝  ██╔══██╗██╔═══╝
-//  ██████╔╝███████╗██║  ██║██║
-//  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝     `
+  const asciiArt = `
+  ██████╗███████╗██████╗ ██████╗ corp
+ ██╔════╝██╔════╝██╔══██╗██╔══██╗
+ ╚█████╗ █████╗  ██████╔╝██████╔╝
+  ╚═══██╗██╔══╝  ██╔══██╗██╔═══╝ 
+ ██████╔╝███████╗██║  ██║██║     
+ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝     `
 
-//   console.log('%c' + asciiArt, 'color: #ff4139; font-weight: bold;')
-//   console.log(
-//     '%cSERP Corp',
-//     'color: #ff4139; font-size: 16px; font-weight: bold;'
-//   )
+  console.log('%c' + asciiArt, 'color: #ff4139; font-weight: bold;')
+  console.log(
+    '%cSERP Corp',
+    'color: #ff4139; font-size: 16px; font-weight: bold;'
+  )
 
-//   // Enregistrer le timestamp de cet affichage
-//   window.asciiArtTimestamp = Date.now()
-// }
+  // Enregistrer le timestamp de cet affichage
+  window.asciiArtTimestamp = Date.now()
+}
 
 // Data update functions
 const dataConfig = {
@@ -141,7 +141,7 @@ function updateDataWithScramble() {
 // One-time initialization
 function initializeOnce() {
   // Afficher l'ASCII art dans la console
-  // displayAsciiArt()
+  displayAsciiArt()
 
   // Start data update interval
   setInterval(updateDataWithScramble, 4000)
@@ -153,11 +153,11 @@ function initializeOnce() {
 // Initialize page content
 export function initPageContent() {
   // Initialize terminal
-  // initializeTerminal()
+  initializeTerminal()
 
   // Initialize commands
-  // initCommands()
-  // updateWelcomeText()
+  initCommands()
+  updateWelcomeText()
 
   // Initialize scan animation
   // initScanAnimation()
@@ -326,9 +326,9 @@ function initToggleView() {
       }
 
       // Mettre à jour les chevrons quand on revient au manifesto
-      // setTimeout(() => {
-      //   ensureTerminalChevrons()
-      // }, 0)
+      setTimeout(() => {
+        ensureTerminalChevrons()
+      }, 0)
     } else {
       // Mode jeu - même configuration pour mobile et desktop
       viewportRight.style.cssText = `
@@ -450,9 +450,9 @@ function initToggleView() {
     `
   } else {
     // S'assurer que les chevrons sont présents au chargement initial du manifesto
-    // setTimeout(() => {
-    //   ensureTerminalChevrons()
-    // }, 0)
+    setTimeout(() => {
+      ensureTerminalChevrons()
+    }, 0)
   }
 }
 
@@ -729,9 +729,9 @@ window.addEventListener('resize', () => {
   }
 
   // Mise à jour des chevrons pour toutes les pages lors du redimensionnement
-  // if (typeof updateChevrons === 'function') {
-  //   updateChevrons()
-  // }
+  if (typeof updateChevrons === 'function') {
+    updateChevrons()
+  }
 })
 
 // Fonction de gestion des contrôles
