@@ -623,8 +623,8 @@ window.addEventListener('resize', () => {
         if (isGameView) {
           viewportRight.style.cssText = `
             width: ${window.innerWidth >= 1440 ? '60vw' : '70vw'};
-            height: 100vh;
-            min-height: 100vh;
+            height: 50rem;
+            // min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -632,19 +632,19 @@ window.addEventListener('resize', () => {
           if (viewportRightInner) {
             viewportRightInner.style.cssText = `
               height: 100%;
-              min-height: 0;
+              // min-height: 0;
               display: flex;
               flex-direction: column;
-              overflow: hidden;
+              // overflow: hidden;
             `
           }
           if (contentWrapper) {
             contentWrapper.style.cssText = `
-              height: 100%;
+              // height: 100%;
               min-height: 0;
               display: flex;
               flex-direction: column;
-              overflow: hidden;
+              // overflow: hidden;
             `
           }
           if (viewContainer) {
