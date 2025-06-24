@@ -19,33 +19,33 @@ gsap.registerPlugin(CustomEase)
 CustomEase.create('serpeasing', 'M0,0 C0.37,0.01 0.01,0.99 1,1')
 
 // Afficher l'ASCII art dans la console
-function displayAsciiArt() {
-  // Utiliser une approche plus simple pour l'affichage unique
-  // Vérifier si l'ASCII art a déjà été affiché
-  if (window.asciiArtTimestamp) {
-    // Ne pas afficher si moins de 100ms se sont écoulées depuis le dernier affichage
-    // Cela évite les doubles affichages causés par des réinitialisations rapides ou Barba.js
-    const now = Date.now()
-    if (now - window.asciiArtTimestamp < 100) return
-  }
+// function displayAsciiArt() {
+//   // Utiliser une approche plus simple pour l'affichage unique
+//   // Vérifier si l'ASCII art a déjà été affiché
+//   if (window.asciiArtTimestamp) {
+//     // Ne pas afficher si moins de 100ms se sont écoulées depuis le dernier affichage
+//     // Cela évite les doubles affichages causés par des réinitialisations rapides ou Barba.js
+//     const now = Date.now()
+//     if (now - window.asciiArtTimestamp < 100) return
+//   }
 
-  const asciiArt = `
-  ██████╗███████╗██████╗ ██████╗ corp
- ██╔════╝██╔════╝██╔══██╗██╔══██╗
- ╚█████╗ █████╗  ██████╔╝██████╔╝
-  ╚═══██╗██╔══╝  ██╔══██╗██╔═══╝ 
- ██████╔╝███████╗██║  ██║██║     
- ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝     `
+//   const asciiArt = `
+//   ██████╗███████╗██████╗ ██████╗ corp
+//  ██╔════╝██╔════╝██╔══██╗██╔══██╗
+//  ╚█████╗ █████╗  ██████╔╝██████╔╝
+//   ╚═══██╗██╔══╝  ██╔══██╗██╔═══╝
+//  ██████╔╝███████╗██║  ██║██║
+//  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝     `
 
-  console.log('%c' + asciiArt, 'color: #ff4139; font-weight: bold;')
-  console.log(
-    '%cSERP Corp',
-    'color: #ff4139; font-size: 16px; font-weight: bold;'
-  )
+//   console.log('%c' + asciiArt, 'color: #ff4139; font-weight: bold;')
+//   console.log(
+//     '%cSERP Corp',
+//     'color: #ff4139; font-size: 16px; font-weight: bold;'
+//   )
 
-  // Enregistrer le timestamp de cet affichage
-  window.asciiArtTimestamp = Date.now()
-}
+//   // Enregistrer le timestamp de cet affichage
+//   window.asciiArtTimestamp = Date.now()
+// }
 
 // Data update functions
 const dataConfig = {
@@ -141,7 +141,7 @@ function updateDataWithScramble() {
 // One-time initialization
 function initializeOnce() {
   // Afficher l'ASCII art dans la console
-  displayAsciiArt()
+  // displayAsciiArt()
 
   // Start data update interval
   setInterval(updateDataWithScramble, 4000)
