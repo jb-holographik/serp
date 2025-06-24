@@ -1,16 +1,16 @@
 import { gsap } from 'gsap'
 import { CustomEase } from 'gsap/CustomEase'
 
-import { initScanAnimation } from './animations/scan.js'
+// import { initScanAnimation } from './animations/scan.js'
 import { startLoaderAnimation } from './components/loader.js'
 import { initGame } from './components/snake'
-import {
-  initializeTerminal,
-  ensureTerminalChevrons,
-  updateWelcomeText,
-  initCommands,
-  updateChevrons,
-} from './components/terminal.js'
+// import {
+//   initializeTerminal,
+//   ensureTerminalChevrons,
+//   updateWelcomeText,
+//   initCommands,
+//   updateChevrons,
+// } from './components/terminal.js'
 import { initializeBarba } from './config/barba.js'
 import { scrambleText } from './utils/text.js'
 
@@ -153,14 +153,14 @@ function initializeOnce() {
 // Initialize page content
 export function initPageContent() {
   // Initialize terminal
-  initializeTerminal()
+  // initializeTerminal()
 
   // Initialize commands
-  initCommands()
-  updateWelcomeText()
+  // initCommands()
+  // updateWelcomeText()
 
   // Initialize scan animation
-  initScanAnimation()
+  // initScanAnimation()
 
   // Initialize dropdown toggle
   const dropdownButton = document.querySelector('.dropdown')
@@ -326,9 +326,9 @@ function initToggleView() {
       }
 
       // Mettre à jour les chevrons quand on revient au manifesto
-      setTimeout(() => {
-        ensureTerminalChevrons()
-      }, 0)
+      // setTimeout(() => {
+      //   ensureTerminalChevrons()
+      // }, 0)
     } else {
       // Mode jeu - même configuration pour mobile et desktop
       viewportRight.style.cssText = `
@@ -450,9 +450,9 @@ function initToggleView() {
     `
   } else {
     // S'assurer que les chevrons sont présents au chargement initial du manifesto
-    setTimeout(() => {
-      ensureTerminalChevrons()
-    }, 0)
+    // setTimeout(() => {
+    //   ensureTerminalChevrons()
+    // }, 0)
   }
 }
 
@@ -729,9 +729,9 @@ window.addEventListener('resize', () => {
   }
 
   // Mise à jour des chevrons pour toutes les pages lors du redimensionnement
-  if (typeof updateChevrons === 'function') {
-    updateChevrons()
-  }
+  // if (typeof updateChevrons === 'function') {
+  //   updateChevrons()
+  // }
 })
 
 // Fonction de gestion des contrôles
