@@ -609,6 +609,7 @@ window.addEventListener('resize', () => {
   const viewContainer = document.querySelector('.view-container')
   const gameInner = document.querySelector('.game_inner')
   const isGameView = document.querySelector('#game-view.is-visible')
+  document.body.scrollIntoView({ behavior: 'auto', block: 'start' })
 
   // Appeler la fonction dédiée pour gérer les contrôles
   updateGameControlsVisibility()
