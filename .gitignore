@@ -1,6 +1,10 @@
 # 1. On ignore tout à la racine
 /*
 
+!/src/
+/src/**
+!/vite.config.js
+
 # 2. Exceptions — remonte .github WORKFLOWS en premier
 !/.github/
 !/.github/workflows/
@@ -10,17 +14,12 @@
 !/.gitignore
 !/package.json
 !/yarn.lock
-!/vite.config.js
 
 # 4. Ignore dossiers de config et dépendances
 /.vscode/
 /certs/
 /node_modules/
 /.env*
-
-# 5. Inclure ton code source
-!/src/
-/src/**
 
 # 6. Excepter dist/main.js
 !/dist/
