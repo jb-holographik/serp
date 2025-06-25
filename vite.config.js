@@ -4,24 +4,30 @@ import fs from 'fs'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [eslintPlugin({ cache: false })],
+  plugins: [
+    eslintPlugin({
+      cache: false,
+    }),
+  ],
   server: {
-    host: 'localhost',
-    cors: '*',
+    host: true, // 'true' permet de se connecter via IP locale aussi
+    cors: {
+      origin: '*', // meilleur pour éviter des erreurs que `cors: '*'`
+    },
     https: {
       key: fs.readFileSync(path.resolve(__dirname, 'certs/localhost-key.pem')),
       cert: fs.readFileSync(path.resolve(__dirname, 'certs/localhost.pem')),
     },
     hmr: {
       host: 'localhost',
-      protocol: 'wss', // wss = secure WebSocket
+      protocol: 'wss',
     },
   },
   build: {
-    minify: true,
+    minify: 'esbuild', // plus rapide que terser
     manifest: true,
     rollupOptions: {
-      input: './src/main.js',
+      input: path.resolve(__dirname, 'src/main.js'),
       output: {
         format: 'umd',
         entryFileNames: 'main.js',
@@ -30,8 +36,8 @@ export default defineConfig({
         globals: {
           jquery: '$',
         },
-        manualChunks: undefined,
         inlineDynamicImports: true,
+        manualChunks: undefined,
       },
       external: ['jquery'],
     },
