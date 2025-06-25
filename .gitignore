@@ -2,7 +2,7 @@
 /*
 
 !/src/
-/src/**
+!/src/**
 !/vite.config.js
 
 # 2. Exceptions — remonte .github WORKFLOWS en premier
