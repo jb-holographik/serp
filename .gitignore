@@ -17,7 +17,7 @@
 
 # 4. Ignore dossiers de config et dépendances
 /.vscode/
-/certs/
+!/certs/
 /node_modules/
 /.env*
 
