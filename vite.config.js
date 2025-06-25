@@ -1,3 +1,4 @@
+// vite.config.js
 import { defineConfig } from 'vite'
 import eslintPlugin from 'vite-plugin-eslint'
 import fs from 'fs'
@@ -7,17 +8,15 @@ export default defineConfig(({ command }) => {
   const common = {
     plugins: [eslintPlugin({ cache: false })],
     build: {
-      minify: true,
-      manifest: true,
+      // désactive manifest s'il n'est pas nécessaire en CI
+      manifest: false,
       rollupOptions: {
-        input: './src/main.js',
+        // CHEMIN ABSOLU vers ton point d'entrée
+        input: path.resolve(__dirname, 'src/main.js'),
         output: {
-          format: 'umd',
           entryFileNames: 'main.js',
-          esModule: false,
+          format: 'iife',      // ou 'umd' selon ton besoin
           compact: true,
-          globals: { jquery: '$' },
-          inlineDynamicImports: true,
         },
         external: ['jquery'],
       },
@@ -25,12 +24,12 @@ export default defineConfig(({ command }) => {
   }
 
   if (command === 'serve') {
-    // mode dev local : on active HTTPS + HMR
     return {
       ...common,
       server: {
         host: 'localhost',
         cors: '*',
+        // load certs **seulement** en dev local
         https: {
           key: fs.readFileSync(path.resolve(__dirname, 'certs/localhost-key.pem')),
           cert: fs.readFileSync(path.resolve(__dirname, 'certs/localhost.pem')),
@@ -38,8 +37,8 @@ export default defineConfig(({ command }) => {
         hmr: { host: 'localhost', protocol: 'wss' },
       },
     }
-  } else {
-    // mode build ou preview en CI : on ne touche qu'au build
-    return common
   }
+
+  // build / preview en CI : pas de https
+  return common
 })
