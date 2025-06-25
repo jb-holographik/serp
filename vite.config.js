@@ -3,28 +3,33 @@ import eslintPlugin from 'vite-plugin-eslint'
 import fs from 'fs'
 import path from 'path'
 
-export default defineConfig({
-  plugins: [
-    eslintPlugin({
-      cache: false,
-    }),
-  ],
+function getHttpsConfig() {
+  const keyPath = path.resolve(__dirname, 'certs/localhost-key.pem')
+  const certPath = path.resolve(__dirname, 'certs/localhost.pem')
+
+  if (fs.existsSync(keyPath) && fs.existsSync(certPath)) {
+    return {
+      key: fs.readFileSync(keyPath),
+      cert: fs.readFileSync(certPath),
+    }
+  }
+
+  return false // Pas de HTTPS si les fichiers n'existent pas
+}
+
+export default defineConfig(({ command }) => ({
+  plugins: [eslintPlugin({ cache: false })],
   server: {
-    host: true, // 'true' permet de se connecter via IP locale aussi
-    cors: {
-      origin: '*', // meilleur pour éviter des erreurs que `cors: '*'`
-    },
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, 'certs/localhost-key.pem')),
-      cert: fs.readFileSync(path.resolve(__dirname, 'certs/localhost.pem')),
-    },
+    host: true,
+    cors: { origin: '*' },
+    https: getHttpsConfig(),
     hmr: {
       host: 'localhost',
       protocol: 'wss',
     },
   },
   build: {
-    minify: 'esbuild', // plus rapide que terser
+    minify: 'esbuild',
     manifest: true,
     rollupOptions: {
       input: path.resolve(__dirname, 'src/main.js'),
@@ -42,4 +47,4 @@ export default defineConfig({
       external: ['jquery'],
     },
   },
-})
+}))
