@@ -24,7 +24,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build with Vite
+      - name: Build with Vite (inject Supabase key)
+        env:
+          VITE_SUPABASE_KEY: ${{ secrets.VITE_SUPABASE_KEY }}
         run: yarn build
 
       - name: Deploy dist to release branch
