@@ -1,29 +1,15 @@
-# 1. On ignore tout à la racine
-/*
+# Modules et logs
+node_modules/
+yarn-error.log
 
-!/src/
-!/src/**
-!/vite.config.js
+# Systèmes
+.DS_Store
 
-# 2. Exceptions — remonte .github WORKFLOWS en premier
-!/.github/
-!/.github/workflows/
-!/.github/workflows/*.yml
+# Fichiers locaux
+*.local
+.env
+.eslintcache
 
-# 3. Autres exceptions : fichiers essentiels
-!/.gitignore
-!/package.json
-!/yarn.lock
-
-# 4. Ignore dossiers de config et dépendances
-/.vscode/
-!/certs/
-!/.eslintignore
-!/.eslintrc
-/node_modules/
-/.env*
-
-# 6. Excepter dist/main.js
-!/dist/
-/dist/*
-!/dist/main.js
+# Ne versionne pas le dossier dist (il est publié via CI)
+dist/
+dist-ssr/
