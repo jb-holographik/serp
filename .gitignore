@@ -1,29 +1,27 @@
-# --- commencer par ré-inclure .github/workflows ---
+# 1. On ignore tout à la racine
+/*
+
+# 2. Exceptions — remonte .github WORKFLOWS en premier
 !/.github/
 !/.github/workflows/
 !/.github/workflows/*.yml
 
-# --- puis le reste de ton .gitignore ---
-
-# Ignore tout à la racine
-/*
-
-# Exception pour les fichiers essentiels
+# 3. Autres exceptions : fichiers essentiels
 !/.gitignore
 !/package.json
 !/yarn.lock
 
-# Ignore dossiers de config et dépendances locales
+# 4. Ignore dossiers de config et dépendances
 /.vscode/
 /certs/
 /node_modules/
 /.env*
 
-# Inclure le code source
+# 5. Inclure ton code source
 !/src/
 /src/**
 
-# Excepter dist/main.js
+# 6. Excepter dist/main.js
 !/dist/
 /dist/*
 !/dist/main.js

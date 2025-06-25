@@ -1,0 +1,60 @@
+name: Build & Deploy main.js to release
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      # 1) Récupère tout le repo, y compris les branches
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0   # nécessaire pour push sur une autre branche
+
+      # 2) Installe Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # 3) Installe les dépendances
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # 4) Build avec la clé Supabase injectée par Secrets
+      - name: Build dist
+        env:
+          VITE_SUPABASE_KEY: ${{ secrets.VITE_SUPABASE_KEY }}
+        run: yarn build
+
+      # 5) Configure Git pour le commit
+      - name: Configure git author
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # 6) Bascule (ou crée) la branche release
+      - name: Checkout or create release branch
+        run: |
+          if git rev-parse --verify release; then
+            git checkout release
+          else
+            git checkout --orphan release
+          fi
+
+      # 7) Nettoie la branche pour ne laisser que main.js
+      - name: Clean release branch
+        run: |
+          git rm -rf .
+          mkdir -p dist
+          cp dist/main.js .
+
+      # 8) Commit & push sur release
+      - name: Commit and push
+        run: |
+          git add main.js
+          git commit -m "🚀 Deploy main.js from main@${GITHUB_SHA::7}"
+          git push origin release --force
