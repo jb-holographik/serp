@@ -623,7 +623,7 @@ window.addEventListener('resize', () => {
         if (isGameView) {
           viewportRight.style.cssText = `
             width: ${window.innerWidth >= 1440 ? '60vw' : '70vw'};
-            height: 50rem;
+            // height: 50rem;
             // min-height: 100vh;
             display: flex;
             flex-direction: column;
