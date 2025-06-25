@@ -756,6 +756,7 @@ export function updateGameControlsVisibility() {
   if (isMobile) {
     // Sur mobile/tablette
     gameControls.style.visibility = 'visible'
+    gameControls.style.display = 'flex'
     restartBtn.style.display = 'none'
   } else {
     // Sur desktop
