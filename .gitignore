@@ -18,6 +18,8 @@
 # 4. Ignore dossiers de config et dépendances
 /.vscode/
 !/certs/
+!/.eslintignore
+!/.eslintrc
 /node_modules/
 /.env*
 
