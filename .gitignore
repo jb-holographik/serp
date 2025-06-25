@@ -10,6 +10,7 @@
 !/.gitignore
 !/package.json
 !/yarn.lock
+!/vite.config.js
 
 # 4. Ignore dossiers de config et dépendances
 /.vscode/
