@@ -3,6 +3,18 @@ import { gsap } from 'gsap'
 
 import { updateGameControlsVisibility } from '../main'
 
+// Masquer les contrôles sur desktop
+if (
+  typeof window !== 'undefined' &&
+  window.matchMedia &&
+  window.matchMedia('(min-width: 997px)').matches
+) {
+  const controls = document.querySelector('.game-controls')
+  if (controls) {
+    controls.style.display = 'none'
+  }
+}
+
 let gameInstance = null
 let preloadedAssets = null
 
