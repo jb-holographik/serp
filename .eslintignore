@@ -4,7 +4,7 @@ node_modules
 dist
 # don't lint nyc coverage output
 coverage
-
+css/normalize.css
 example
 vite.config.js
 README.md
