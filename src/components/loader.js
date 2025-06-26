@@ -93,8 +93,8 @@ export function startLoaderAnimation() {
         duration: 1.8,
         ease: 'serpeasing',
       },
-      '-=1.8'
-    ) // Démarre 1.8s avant la fin, donc en même temps que loader-wrap
+      '<'
+    ) // Démarre exactement en même temps que l'animation précédente (loader-wrap)
   }
 
   return timeline
