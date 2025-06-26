@@ -84,7 +84,7 @@ export function startLoaderAnimation() {
     timeline.to(
       '.scan.is-loader-2',
       {
-        y: '-100vh', // Remonte de 110vh en même temps que loader-wrap rétrécit
+        y: '-110vh', // Remonte de 110vh en même temps que loader-wrap rétrécit
         duration: 1.8,
         ease: 'serpeasing',
       },
