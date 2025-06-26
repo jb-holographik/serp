@@ -10,6 +10,7 @@ export function startLoaderAnimation() {
   const loader = document.querySelector('.loader')
   const loaderWrap = document.querySelector('.loader-wrap')
   const scan = document.querySelector('.scan.is-loader-1')
+  const scanLoader2 = document.querySelector('.scan.is-loader-2')
   const progressAmount = document.querySelector('.progress-amount')
   const loaderLogs = document.querySelectorAll('.loader_log')
   const loaderSections = ['.loader_logos', '.loader_logs', '.loader_progress']
@@ -72,6 +73,7 @@ export function startLoaderAnimation() {
     })
   }
 
+  // Animation simultanée de loader-wrap et scan.is-loader-2
   timeline.to(loaderWrap, {
     height: 0,
     duration: 1.8,
@@ -80,16 +82,20 @@ export function startLoaderAnimation() {
       document.body.style.overflow = ''
       if (loader) loader.remove()
     },
-  }),
+  })
+
+  // Animation de scan.is-loader-2 en parallèle avec loader-wrap
+  if (scanLoader2) {
     timeline.to(
-      '.scan.is-loader-2',
+      scanLoader2,
       {
-        y: '-110vh', // Remonte de 110vh en même temps que loader-wrap rétrécit
+        y: '-110vh',
         duration: 1.8,
         ease: 'serpeasing',
       },
-      0
-    )
+      '-=1.8'
+    ) // Démarre 1.8s avant la fin, donc en même temps que loader-wrap
+  }
 
   return timeline
 }
