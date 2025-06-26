@@ -4,14 +4,16 @@ import { gsap } from 'gsap'
 import { updateGameControlsVisibility } from '../main'
 
 // Masquer les contrôles sur desktop
-if (
-  typeof window !== 'undefined' &&
-  window.matchMedia &&
-  window.matchMedia('(min-width: 997px)').matches
-) {
-  const controls = document.querySelector('.game-controls')
-  if (controls) {
-    controls.style.display = 'none'
+function hideControls() {
+  if (
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(min-width: 997px)').matches
+  ) {
+    const controls = document.querySelector('.game-controls')
+    if (controls) {
+      controls.style.display = 'none'
+    }
   }
 }
 
@@ -839,7 +841,7 @@ class SnakeGame {
 }
 
 // Précharger les assets dès que possible
-document.addEventListener('DOMContentLoaded', preloadGameAssets)
+document.addEventListener('DOMContentLoaded', preloadGameAssets, hideControls)
 
 // Export uniquement la méthode d'initialisation
 export function initGame() {
