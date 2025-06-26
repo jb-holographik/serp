@@ -225,7 +225,7 @@ class SnakeGame {
 
   setupEventListeners() {
     // Observer les changements de taille du container
-    this.Observer = new ResizeObserver(() => {
+    this.resizeObserver = new ResizeObserver(() => {
       clearTimeout(this.resizeTimeout)
       this.resizeTimeout = setTimeout(() => this.resizeCanvas(), 100)
     })
