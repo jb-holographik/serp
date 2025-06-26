@@ -1,16 +1,11 @@
-# Modules et logs
 node_modules/
 yarn-error.log
 
-# Systèmes
 .DS_Store
 
-# Fichiers locaux
 *.local
 .env
 .eslintcache
 certs/
-
-# Ne versionne pas le dossier dist (il est publié via CI)
 dist/
 dist-ssr/

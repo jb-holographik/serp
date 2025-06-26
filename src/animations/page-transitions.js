@@ -1,12 +1,8 @@
 import { gsap } from 'gsap'
 
 import { startLoaderAnimation } from '../components/loader'
-
-// Animation constants
 export const commonEasing = 'serpeasing'
 export const commonDuration = 1
-
-// Animation functions
 export function textOff(container) {
   const manifestoText = container.querySelector('.is-manifesto-text')
   const chevrons = container.querySelector('.chevrons')
@@ -25,13 +21,10 @@ export function textOff(container) {
     })
   }
 }
-
 export function textOn(container) {
   const manifestoText = container.querySelector('.is-manifesto-text')
   const chevrons = container.querySelector('.chevrons')
-
   const blinkTl = gsap.timeline()
-
   if (manifestoText) {
     blinkTl
       .set(manifestoText, { opacity: 0 })
@@ -51,7 +44,6 @@ export function textOn(container) {
         ease: 'none',
       })
   }
-
   if (chevrons) {
     blinkTl
       .set(chevrons, { opacity: 0 }, 0)
@@ -84,7 +76,6 @@ export function textOn(container) {
       )
   }
 }
-
 export function quitHome() {
   const viewportRight = document.querySelector('.viewport_right')
   const viewportLeft = document.querySelector('.viewport_left')
@@ -94,22 +85,14 @@ export function quitHome() {
   const activeButton = document.querySelector('.toggle_button.is-active')
   const arrows = document.querySelectorAll('.toggle_arrow')
   const destinationLabel = document.querySelector('.is--label')
-
-  // Sur mobile/tablette, juste cacher viewportLeft sans animation
   if (window.innerWidth < 992) {
     viewportLeft.style.display = 'none'
     return Promise.resolve()
   }
-
-  // Timeline pour synchroniser les animations
   const tl = gsap.timeline()
-
-  // S'assurer que le label de destination est masqué initialement
   if (destinationLabel) {
     gsap.set(destinationLabel, { display: 'none' })
   }
-
-  // Animer les boutons de toggle inactifs et les flèches
   tl.to(toggleButtons, {
     flex: '0 1 0%',
     opacity: 0,
@@ -128,7 +111,6 @@ export function quitHome() {
       },
       '<'
     )
-    // Animer le bouton actif
     .to(
       activeButton,
       {
@@ -138,8 +120,6 @@ export function quitHome() {
       },
       '<'
     )
-
-  // Animer viewport_right
   tl.to(
     viewportRight,
     {
@@ -156,18 +136,13 @@ export function quitHome() {
     },
     0
   )
-
   return tl
 }
-
 export function enterHome() {
   const timeline = gsap.timeline()
-
-  // Lancer le loader
   const loaderTimeline = startLoaderAnimation()
   if (loaderTimeline) {
     timeline.add(loaderTimeline)
   }
-
   return timeline
 }
