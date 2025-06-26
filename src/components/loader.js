@@ -73,7 +73,8 @@ export function startLoaderAnimation() {
   }
 
   timeline.to(loaderWrap, {
-    height: 0,
+    // height: 0,
+    yPercent: -100,
     duration: 1.8,
     ease: 'serpeasing',
     onComplete: () => {
