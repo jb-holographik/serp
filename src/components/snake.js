@@ -221,7 +221,7 @@ class SnakeGame {
 
   setupEventListeners() {
     // Observer les changements de taille du container
-    this.resizeObserver = new ResizeObserver(() => {
+    this.Observer = new ResizeObserver(() => {
       clearTimeout(this.resizeTimeout)
       this.resizeTimeout = setTimeout(() => this.resizeCanvas(), 100)
     })
@@ -841,7 +841,13 @@ class SnakeGame {
 }
 
 // Précharger les assets dès que possible
-document.addEventListener('DOMContentLoaded', preloadGameAssets, hideControls)
+document.addEventListener('DOMContentLoaded', () => {
+  preloadGameAssets()
+  hideControls()
+})
+
+// Appeler hideControls lors du redimensionnement
+window.addEventListener('resize', hideControls)
 
 // Export uniquement la méthode d'initialisation
 export function initGame() {
