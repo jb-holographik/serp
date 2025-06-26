@@ -3,16 +3,20 @@ import { gsap } from 'gsap'
 
 import { updateGameControlsVisibility } from '../main'
 
-// Masquer les contrôles sur desktop
+// Gérer l'affichage des contrôles selon la taille d'écran
 function hideControls() {
-  if (
-    typeof window !== 'undefined' &&
-    window.matchMedia &&
-    window.matchMedia('(min-width: 997px)').matches
-  ) {
+  if (typeof window !== 'undefined' && window.matchMedia) {
     const controls = document.querySelector('.game-controls')
     if (controls) {
-      controls.style.display = 'none'
+      if (window.matchMedia('(min-width: 997px)').matches) {
+        // Desktop: masquer les contrôles
+        controls.style.display = 'none'
+        controls.style.visibility = 'hidden'
+      } else {
+        // Mobile/Tablette: afficher les contrôles
+        controls.style.display = ''
+        controls.style.visibility = 'visible'
+      }
     }
   }
 }
